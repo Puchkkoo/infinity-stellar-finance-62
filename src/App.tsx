@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -23,6 +24,9 @@ import FuturesOptions from "./pages/services/FuturesOptions";
 import International from "./pages/services/International";
 import TaxReports from "./pages/services/TaxReports";
 import PortfolioManagement from "./pages/services/PortfolioManagement";
+import Forex from "./pages/services/Forex";
+import Crypto from "./pages/services/Crypto";
+import Gullak from "./pages/services/Gullak";
 
 // Feature Pages
 import AlgoTrading from "./pages/features/AlgoTrading";
@@ -30,6 +34,8 @@ import Security from "./pages/features/Security";
 import AdvancedCharting from "./pages/features/AdvancedCharting";
 import MobileTrading from "./pages/features/MobileTrading";
 import LearningResources from "./pages/features/LearningResources";
+import SentimentAnalysis from "./pages/features/SentimentAnalysis";
+import StrategyBuilder from "./pages/features/StrategyBuilder";
 
 // Blog Pages
 import BlogPost from "./pages/blog/BlogPost";
@@ -76,12 +82,17 @@ const App = () => (
           {/* Service Pages */}
           <Route path="/services/equity" element={<Equity />} />
           <Route path="/services/fno" element={<FuturesOptions />} />
+          <Route path="/services/forex" element={<Forex />} />
+          <Route path="/services/crypto" element={<Crypto />} />
+          <Route path="/services/gullak" element={<Gullak />} />
           <Route path="/services/international" element={<International />} />
           <Route path="/services/tax-reports" element={<TaxReports />} />
           <Route path="/services/portfolio-management" element={<PortfolioManagement />} />
           
           {/* Feature Pages */}
           <Route path="/features/algo-trading" element={<AlgoTrading />} />
+          <Route path="/features/sentiment-analysis" element={<SentimentAnalysis />} />
+          <Route path="/features/strategy-builder" element={<StrategyBuilder />} />
           <Route path="/features/security" element={<Security />} />
           <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
           <Route path="/features/mobile-trading" element={<MobileTrading />} />

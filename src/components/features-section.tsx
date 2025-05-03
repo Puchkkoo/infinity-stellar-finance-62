@@ -1,18 +1,32 @@
 
-import { Award, BarChart2, Lock, Smartphone, BookOpen } from "lucide-react";
+import { Award, BarChart2, Lock, Smartphone, BookOpen, Layers, Search, Microscope } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function FeaturesSection() {
   const features = [
     {
-      icon: <BarChart2 className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
+      icon: <Layers className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Algo Trading",
       description: "Deploy automated trading strategies based on predefined parameters and market conditions",
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1542482378-4e3530c8e525?q=80&w=1000&auto=format&fit=crop",
       url: "/features/algo-trading"
     },
     {
+      icon: <Microscope className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
+      title: "Sentiment Analysis",
+      description: "AI-powered analysis of news and social media to identify market sentiment and trading opportunities",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/sentiment-analysis"
+    },
+    {
       icon: <BarChart2 className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
+      title: "Live Strategy Builder",
+      description: "Interactive platform to build and test options strategies based on real-time market data",
+      image: "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/strategy-builder"
+    },
+    {
+      icon: <Search className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Advanced Charting",
       description: "Professional-grade charting tools with over 100 indicators and drawing tools",
       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
@@ -26,18 +40,11 @@ export function FeaturesSection() {
       url: "/features/mobile-trading"
     },
     {
-      icon: <Lock className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
-      title: "Bank-Grade Security",
-      description: "Enterprise-level security protocols to protect your investments and personal data",
-      image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=1000&auto=format&fit=crop",
-      url: "/features/security"
-    },
-    {
       icon: <BookOpen className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Learning Resources",
       description: "Comprehensive educational content to help you make informed investment decisions",
       image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1000&auto=format&fit=crop",
-      url: "/features/learning"
+      url: "/features/learning-resources"
     }
   ];
 
@@ -50,7 +57,7 @@ export function FeaturesSection() {
           </div>
           <h2 className="section-title">Key Features</h2>
           <p className="section-subtitle">
-            Advanced tools and capabilities that set our platform apart
+            Advanced AI-powered tools and capabilities that set our platform apart
           </p>
         </div>
 

@@ -1,6 +1,5 @@
 
 import { Calendar, Star } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function RoadmapSection() {
   const roadmapItems = [
@@ -45,27 +44,41 @@ export function RoadmapSection() {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 space-x-6 scrollbar-hide">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Stair visualization background */}
+          <div className="absolute left-1/2 top-0 h-full w-4 bg-infinity-200 dark:bg-infinity-800/30 transform -translate-x-1/2 rounded-full"></div>
+          
           {roadmapItems.map((item, index) => (
-            <Card 
+            <div 
               key={index}
-              className={`min-w-[280px] max-w-[280px] flex-shrink-0 hover:shadow-lg transition-all duration-300 ${
-                item.special ? 'border-dashed border-2' : ''
-              }`}
+              className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center mb-16 relative`}
             >
-              <CardHeader className="pb-2">
-                <div className="flex items-center mb-2">
-                  {item.special ? (
-                    <Star className="h-4 w-4 text-gold-400 mr-2" />
-                  ) : null}
-                  <CardDescription className="text-sm font-medium">{item.date}</CardDescription>
+              {/* Stair step */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-32 h-12 bg-infinity-100 dark:bg-infinity-900/20 -z-10 rounded-lg shadow-inner" 
+                   style={{ top: `${index * 40}px` }}></div>
+                   
+              {/* Timeline dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-infinity-500 dark:bg-infinity-400 rounded-full border-4 border-white dark:border-infinity-950 z-10 shadow-lg"></div>
+              
+              {/* Content */}
+              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-12 text-right' : 'pl-12'}`}>
+                <div className={`p-6 bg-white dark:bg-infinity-900/40 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+                  item.special ? 'border-dashed border-2 border-infinity-300 dark:border-infinity-700' : ''
+                }`}>
+                  <div className="flex items-center mb-2 justify-between">
+                    <span className="text-sm font-medium px-3 py-1 rounded-full bg-infinity-100 dark:bg-infinity-800 text-infinity-700 dark:text-infinity-300">
+                      {item.date}
+                    </span>
+                    {item.special && <Star className="h-4 w-4 text-amber-400" />}
+                  </div>
+                  <h3 className="text-xl font-serif font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </div>
-                <CardTitle className="text-xl font-serif">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{item.description}</p>
-              </CardContent>
-            </Card>
+              </div>
+              
+              {/* Spacer for the other side */}
+              <div className="w-5/12"></div>
+            </div>
           ))}
         </div>
       </div>
