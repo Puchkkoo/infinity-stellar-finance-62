@@ -1,6 +1,7 @@
 
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ReactNode } from "react";
 
 export interface FeaturePageProps {
   title: string;
@@ -12,7 +13,7 @@ export interface FeaturePageProps {
     title: string;
     description: string;
   }[];
-  howItWorks: {
+  howItWorks?: {
     step: string;
     description: string;
   }[];
@@ -20,6 +21,7 @@ export interface FeaturePageProps {
     title: string;
     description: string;
   }[];
+  children?: ReactNode;
 }
 
 export function FeaturePageTemplate({
@@ -29,8 +31,9 @@ export function FeaturePageTemplate({
   description,
   image,
   benefits,
-  howItWorks,
+  howItWorks = [],
   useCases = [],
+  children,
 }: FeaturePageProps) {
   return (
     <div className="min-h-screen flex flex-col">
@@ -82,28 +85,30 @@ export function FeaturePageTemplate({
           </div>
         </section>
         
-        <section className="py-16 bg-infinity-50/50 dark:bg-infinity-950/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="section-title">How It Works</h2>
-              <p className="section-subtitle">Step by step guide to leveraging this feature</p>
-            </div>
-            
-            <div className="max-w-4xl mx-auto">
-              {howItWorks.map((step, i) => (
-                <div key={i} className="flex gap-6 mb-12 last:mb-0">
-                  <div className="bg-infinity-100 dark:bg-infinity-900/40 rounded-full h-12 w-12 flex items-center justify-center shrink-0 mt-1">
-                    <span className="text-xl font-bold text-infinity-700 dark:text-infinity-400">{i + 1}</span>
+        {howItWorks.length > 0 && (
+          <section className="py-16 bg-infinity-50/50 dark:bg-infinity-950/30">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="section-title">How It Works</h2>
+                <p className="section-subtitle">Step by step guide to leveraging this feature</p>
+              </div>
+              
+              <div className="max-w-4xl mx-auto">
+                {howItWorks.map((step, i) => (
+                  <div key={i} className="flex gap-6 mb-12 last:mb-0">
+                    <div className="bg-infinity-100 dark:bg-infinity-900/40 rounded-full h-12 w-12 flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-xl font-bold text-infinity-700 dark:text-infinity-400">{i + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-serif font-bold mb-3">{step.step}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-serif font-bold mb-3">{step.step}</h3>
-                    <p className="text-muted-foreground">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
         
         {useCases.length > 0 && (
           <section className="py-16 bg-background">
@@ -120,6 +125,9 @@ export function FeaturePageTemplate({
             </div>
           </section>
         )}
+        
+        {/* Render children content if provided */}
+        {children}
       </main>
       <Footer />
     </div>

@@ -15,6 +15,7 @@ const AdvancedCharting = () => {
   const [chartType, setChartType] = useState("candlestick");
   const [timeframe, setTimeframe] = useState("1D");
   const [indicators, setIndicators] = useState(["volume"]);
+  const [backgroundImage] = useState("https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=1000&auto=format&fit=crop");
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -23,6 +24,15 @@ const AdvancedCharting = () => {
 
   const handleBackClick = () => {
     navigate(-1);
+  };
+
+  // Toggle indicator selection
+  const toggleIndicator = (indicator) => {
+    if (indicators.includes(indicator)) {
+      setIndicators(indicators.filter(i => i !== indicator));
+    } else {
+      setIndicators([...indicators, indicator]);
+    }
   };
 
   return (
@@ -47,7 +57,7 @@ const AdvancedCharting = () => {
           "Our charting system combines powerful visualization capabilities with hundreds of technical indicators, drawing tools, and pattern recognition features to help you identify opportunities and make informed trading decisions.",
           "Whether you're a day trader, swing trader, or long-term investor, our advanced charting tools adapt to your strategy and provide the insights you need to navigate the markets with confidence."
         ]}
-        image="https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=1000&auto=format&fit=crop"
+        image={backgroundImage}
         benefits={[
           {
             title: "Professional-Grade Tools",
@@ -148,14 +158,27 @@ const AdvancedCharting = () => {
                       </TabsList>
                     </Tabs>
                     
-                    <Button size="sm" variant="outline" className="flex items-center gap-1">
-                      <Settings className="h-4 w-4" />
-                      <span>Indicators</span>
+                    <Button 
+                      size="sm" 
+                      variant={indicators.includes("volume") ? "default" : "outline"}
+                      className={indicators.includes("volume") ? "bg-infinity-600" : ""}
+                      onClick={() => toggleIndicator("volume")}
+                    >
+                      Volume
+                    </Button>
+                    
+                    <Button 
+                      size="sm" 
+                      variant={indicators.includes("ma") ? "default" : "outline"} 
+                      className={indicators.includes("ma") ? "bg-infinity-600" : ""}
+                      onClick={() => toggleIndicator("ma")}
+                    >
+                      Moving Avg
                     </Button>
                     
                     <Button size="sm" variant="outline" className="flex items-center gap-1">
                       <Layers className="h-4 w-4" />
-                      <span>Drawing Tools</span>
+                      <span>More</span>
                     </Button>
                   </div>
                 </div>
@@ -163,20 +186,13 @@ const AdvancedCharting = () => {
               <CardContent className="p-0 relative">
                 <div className="p-4">
                   <div className="w-full h-[60vh] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 rounded-md overflow-hidden relative">
-                    {/* Chart Container */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      backgroundImage: "url('https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=1000&auto=format&fit=crop')",
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      opacity: 0.1
-                    }} />
+                    {/* Chart Background Image */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center" 
+                      style={{ backgroundImage: `url(${backgroundImage})`, opacity: 0.1 }}
+                    />
                     
-                    <div className="absolute top-0 left-0 w-full h-full bg-white/50 dark:bg-infinity-950/50 p-4">
+                    <div className="absolute top-0 left-0 w-full h-full bg-white/70 dark:bg-infinity-950/70 p-4">
                       {/* Stock Price Summary */}
                       <div className="flex justify-between mb-4">
                         <div>
@@ -230,8 +246,12 @@ const AdvancedCharting = () => {
                               />
                               <Legend />
                               <Line type="monotone" dataKey="close" stroke="#8884d8" activeDot={{ r: 8 }} />
-                              <Line type="monotone" dataKey="ma20" stroke="#ff7300" dot={false} name="MA 20" />
-                              <Line type="monotone" dataKey="ma50" stroke="#387908" dot={false} name="MA 50" />
+                              {indicators.includes('ma') && (
+                                <>
+                                  <Line type="monotone" dataKey="ma20" stroke="#ff7300" dot={false} name="MA 20" />
+                                  <Line type="monotone" dataKey="ma50" stroke="#387908" dot={false} name="MA 50" />
+                                </>
+                              )}
                               {indicators.includes('volume') && (
                                 <Line type="monotone" dataKey="volume" stroke="#82ca9d" yAxisId={1} />
                               )}

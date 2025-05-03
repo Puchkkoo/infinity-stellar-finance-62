@@ -45,60 +45,40 @@ export function RoadmapSection() {
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Stair visualization - more pronounced and visible */}
-          <div className="absolute inset-y-0 left-1/2 w-1 bg-infinity-400 dark:bg-infinity-600/50 transform -translate-x-1/2"></div>
+        <div className="max-w-5xl mx-auto relative">
+          {/* Center Timeline */}
+          <div className="absolute left-1/2 h-full w-1 bg-gradient-to-b from-pink-400 to-blue-500 transform -translate-x-1/2"></div>
           
-          {/* Enhanced stairs visualization */}
-          <div className="absolute inset-0 left-1/2 transform -translate-x-1/2 w-72 z-0">
-            {/* Vertical segments */}
-            {roadmapItems.map((_, idx) => (
-              <div 
-                key={`v-${idx}`}
-                className="absolute w-1 bg-infinity-400 dark:bg-infinity-600/50"
-                style={{
-                  left: idx % 2 === 0 ? '0px' : '100%',
-                  top: `${idx * 120}px`,
-                  height: '120px'
-                }}
-              ></div>
-            ))}
-            
-            {/* Horizontal segments - the actual stair steps */}
-            {roadmapItems.map((_, idx) => (
-              idx < roadmapItems.length - 1 && (
-                <div 
-                  key={`h-${idx}`}
-                  className="absolute h-1 bg-infinity-400 dark:bg-infinity-600/50"
-                  style={{
-                    left: idx % 2 === 0 ? '0px' : '36px',
-                    top: `${(idx + 1) * 120}px`,
-                    width: '100%'
-                  }}
-                ></div>
-              )
-            ))}
-          </div>
-          
+          {/* Roadmap items */}
           {roadmapItems.map((item, index) => (
             <div 
               key={index}
-              className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-start mb-28 relative`}
+              className={`flex items-center mb-16 last:mb-0 relative ${index % 2 === 0 ? "" : "flex-row-reverse"}`}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-infinity-500 dark:bg-infinity-400 rounded-full border-4 border-white dark:border-infinity-950 z-10 shadow-lg"></div>
+              {/* Timeline circle */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 flex items-center justify-center">
+                <div className={`w-6 h-6 rounded-full ${item.special ? 'bg-pink-500' : 'bg-blue-500'} z-10 border-4 border-white dark:border-infinity-900 shadow-lg`}></div>
+              </div>
               
-              {/* Content box with better positioning */}
-              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-16 text-right' : 'pl-16'} relative z-10`}>
+              {/* Content left or right side */}
+              <div className={`w-1/2 ${index % 2 === 0 ? "pr-12 text-right" : "pl-12"}`}></div>
+              
+              <div className={`w-1/2 ${index % 2 === 0 ? "pl-12" : "pr-12 text-right"}`}>
                 <div className={`p-6 bg-white dark:bg-infinity-900/40 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
-                  item.special ? 'border-dashed border-2 border-infinity-300 dark:border-infinity-700' : ''
+                  item.special ? 'border-2 border-pink-300 dark:border-pink-700' : ''
                 }`}>
-                  {/* Feature label in pink - matching the image */}
-                  <h3 className="text-xl font-serif font-bold mb-2 text-pink-600 dark:text-pink-400">{item.title}</h3>
+                  <h3 className={`text-xl font-serif font-bold mb-2 ${
+                    item.special ? 'text-pink-600 dark:text-pink-400' : 'text-blue-600 dark:text-blue-400'
+                  }`}>
+                    {item.title}
+                  </h3>
                   
-                  {/* Date tag */}
-                  <div className="flex items-center mb-2 justify-between">
-                    <span className="text-sm font-medium px-3 py-1 rounded-full bg-infinity-100 dark:bg-infinity-800 text-infinity-700 dark:text-infinity-300">
+                  <div className="flex items-center mb-3 justify-between">
+                    <span className={`text-sm font-medium px-3 py-1 rounded-full ${
+                      item.special 
+                        ? 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300' 
+                        : 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
+                    }`}>
                       {item.date}
                     </span>
                     {item.special && <Star className="h-4 w-4 text-amber-400" />}
@@ -106,24 +86,14 @@ export function RoadmapSection() {
                   
                   <p className="text-muted-foreground">{item.description}</p>
                   
-                  {/* Arrow pointing to the timeline, matching the image */}
-                  <div 
-                    className={`absolute top-1/2 ${index % 2 === 0 ? 'right-0 -mr-12 transform rotate-180' : 'left-0 -ml-12'} transform -translate-y-1/2`}
-                  >
-                    <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path 
-                        d="M0 10H30M30 10L20 0M30 10L20 20" 
-                        stroke="#EC4899" 
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
+                  {/* Connection line to timeline */}
+                  <div className={`absolute top-1/2 w-10 h-1 transform -translate-y-1/2 ${
+                    index % 2 === 0 
+                      ? 'right-0 mr-[1px] bg-gradient-to-r from-blue-500 to-pink-400' 
+                      : 'left-0 ml-[1px] bg-gradient-to-l from-blue-500 to-pink-400'
+                  }`}></div>
                 </div>
               </div>
-              
-              {/* Empty space for the other side */}
-              <div className="w-5/12"></div>
             </div>
           ))}
         </div>

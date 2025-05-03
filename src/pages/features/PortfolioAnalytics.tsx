@@ -309,7 +309,7 @@ const MetricCard = ({ title, value, trend, trendValue, description, textColor })
     <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
     <div className="flex items-baseline gap-2 mt-1">
       <span className={`text-2xl font-bold ${textColor}`}>{value}</span>
-      {trend && (
+      {trend && trendValue && (
         <span className={`flex items-center text-xs ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
           {trend === 'up' ? <TrendingUp className="h-3 w-3 mr-0.5" /> : <TrendingDown className="h-3 w-3 mr-0.5" />}
           {trendValue}
