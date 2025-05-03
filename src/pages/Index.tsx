@@ -12,25 +12,9 @@ import { NewsSection } from "@/components/news-section";
 import { MarketsOverview } from "@/components/markets-overview";
 
 const Index = () => {
-  // Scroll to top function for all button clicks
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Add event listener when component mounts
+  // Scroll to top function when component mounts
   React.useEffect(() => {
-    // Add click listener to all buttons and links
-    const buttons = document.querySelectorAll('button, a');
-    buttons.forEach(button => {
-      button.addEventListener('click', scrollToTop);
-    });
-
-    // Cleanup function
-    return () => {
-      buttons.forEach(button => {
-        button.removeEventListener('click', scrollToTop);
-      });
-    };
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (

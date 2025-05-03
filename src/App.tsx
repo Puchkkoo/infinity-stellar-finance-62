@@ -1,10 +1,10 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -36,6 +36,8 @@ import MobileTrading from "./pages/features/MobileTrading";
 import LearningResources from "./pages/features/LearningResources";
 import SentimentAnalysis from "./pages/features/SentimentAnalysis";
 import StrategyBuilder from "./pages/features/StrategyBuilder";
+import StockScreener from "./pages/features/StockScreener";
+import PortfolioAnalytics from "./pages/features/PortfolioAnalytics";
 
 // Blog Pages
 import BlogPost from "./pages/blog/BlogPost";
@@ -52,11 +54,6 @@ const SpongeAbout = () => <div>About Sponge Coming Soon</div>;
 const SynapseTaskManagement = () => <div>Task Management Coming Soon</div>;
 const SynapseCalendar = () => <div>Calendar Coming Soon</div>;
 const SynapseDocuments = () => <div>Documents Coming Soon</div>;
-
-// Additional routes for Flamingo product
-const StockScreener = () => <div>Stock Screener Coming Soon</div>;
-const PortfolioAnalytics = () => <div>Portfolio Analytics Coming Soon</div>;
-const AdvancedChartingRoute = () => <div>Advanced Charting Coming Soon</div>;
 
 const queryClient = new QueryClient();
 
@@ -97,6 +94,8 @@ const App = () => (
           <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
           <Route path="/features/mobile-trading" element={<MobileTrading />} />
           <Route path="/features/learning-resources" element={<LearningResources />} />
+          <Route path="/features/stock-screener" element={<StockScreener />} />
+          <Route path="/features/portfolio-analytics" element={<PortfolioAnalytics />} />
           
           {/* Blog Pages */}
           <Route path="/blog/:slug" element={<BlogPost />} />
@@ -113,11 +112,6 @@ const App = () => (
           <Route path="/synapse/task-management" element={<SynapseTaskManagement />} />
           <Route path="/synapse/calendar" element={<SynapseCalendar />} />
           <Route path="/synapse/documents" element={<SynapseDocuments />} />
-          
-          {/* Flamingo Routes */}
-          <Route path="/features/stock-screener" element={<StockScreener />} />
-          <Route path="/features/portfolio-analytics" element={<PortfolioAnalytics />} />
-          <Route path="/features/advanced-charting" element={<AdvancedChartingRoute />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

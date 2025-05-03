@@ -1,14 +1,22 @@
 
+import React, { useEffect } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Box, BarChart3, LineChart, Users, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Box, BarChart3, LineChart, Users, Shield, ArrowLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Flamingo = () => {
+  const navigate = useNavigate();
+
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleDemoClick = () => {
     toast.success("Demo mode activated! You can now explore all premium features for the next 30 minutes.");
   };
@@ -17,10 +25,27 @@ const Flamingo = () => {
     window.location.href = "/register";
   };
 
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
+        {/* Back button */}
+        <div className="container mx-auto px-4 pt-4">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="mb-4 flex items-center gap-1"
+            onClick={handleBackClick}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back
+          </Button>
+        </div>
+        
         <section className="py-20 bg-gradient-to-b from-pink-500/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-radial from-pink-300/20 to-transparent rounded-full blur-3xl"></div>
