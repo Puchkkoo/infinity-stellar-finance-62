@@ -142,6 +142,8 @@ const PortfolioAnalytics = () => {
                   <MetricCard
                     title="Beta"
                     value="0.86"
+                    trend="neutral"
+                    trendValue=""
                     description="vs. NIFTY 50"
                     textColor="text-blue-600"
                   />
@@ -310,8 +312,8 @@ const MetricCard = ({ title, value, trend, trendValue, description, textColor })
     <div className="flex items-baseline gap-2 mt-1">
       <span className={`text-2xl font-bold ${textColor}`}>{value}</span>
       {trend && trendValue && (
-        <span className={`flex items-center text-xs ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
-          {trend === 'up' ? <TrendingUp className="h-3 w-3 mr-0.5" /> : <TrendingDown className="h-3 w-3 mr-0.5" />}
+        <span className={`flex items-center text-xs ${trend === 'up' ? 'text-green-600' : trend === 'down' ? 'text-red-600' : 'text-blue-600'}`}>
+          {trend === 'up' ? <TrendingUp className="h-3 w-3 mr-0.5" /> : trend === 'down' ? <TrendingDown className="h-3 w-3 mr-0.5" /> : null}
           {trendValue}
         </span>
       )}
