@@ -5,9 +5,10 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Box, BarChart3, LineChart, Users, Shield, ArrowLeft } from "lucide-react";
+import { Box, BarChart3, LineChart, Users, Shield } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { BackButton } from "@/components/back-button";
 
 const Flamingo = () => {
   const navigate = useNavigate();
@@ -25,8 +26,16 @@ const Flamingo = () => {
     window.location.href = "/register";
   };
 
-  const handleBackClick = () => {
-    navigate(-1);
+  const handleExploreCharts = () => {
+    navigate("/features/advanced-charting");
+  };
+
+  const handleTryScreener = () => {
+    navigate("/features/stock-screener");
+  };
+
+  const handleViewDemo = () => {
+    navigate("/features/portfolio-analytics");
   };
 
   return (
@@ -35,15 +44,7 @@ const Flamingo = () => {
       <main className="flex-grow">
         {/* Back button */}
         <div className="container mx-auto px-4 pt-4">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="mb-4 flex items-center gap-1"
-            onClick={handleBackClick}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </Button>
+          <BackButton />
         </div>
         
         <section className="py-20 bg-gradient-to-b from-pink-500/5 to-background relative overflow-hidden">
@@ -174,7 +175,7 @@ const Flamingo = () => {
                         <p className="text-muted-foreground max-w-lg mx-auto mb-6">
                           Interactive charts with over 100+ indicators and drawing tools. Analyze market trends with precision using customizable timeframes.
                         </p>
-                        <Button className="bg-pink-600 hover:bg-pink-700">Explore Charts</Button>
+                        <Button className="bg-pink-600 hover:bg-pink-700" onClick={handleExploreCharts}>Explore Charts</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -196,7 +197,7 @@ const Flamingo = () => {
                         <p className="text-muted-foreground max-w-lg mx-auto mb-6">
                           Find stocks that match your criteria with our powerful screener. Filter by fundamentals, technicals, and over 150 parameters.
                         </p>
-                        <Button className="bg-pink-600 hover:bg-pink-700">Try Screener</Button>
+                        <Button className="bg-pink-600 hover:bg-pink-700" onClick={handleTryScreener}>Try Screener</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -218,7 +219,7 @@ const Flamingo = () => {
                         <p className="text-muted-foreground max-w-lg mx-auto mb-6">
                           Track, manage and analyze your investments in one place. Get insights into sector allocation, risk assessment, and performance metrics.
                         </p>
-                        <Button className="bg-pink-600 hover:bg-pink-700">View Demo</Button>
+                        <Button className="bg-pink-600 hover:bg-pink-700" onClick={handleViewDemo}>View Demo</Button>
                       </div>
                     </div>
                   </CardContent>

@@ -1,67 +1,57 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { GalaxyBackground } from "./galaxy-background";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background to-infinity-950/20 min-h-[90vh] flex items-center">
-      {/* Animated galaxy background */}
-      <GalaxyBackground />
+    <section className="relative py-20 md:py-32 overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-background/60"></div>
       
-      {/* Content */}
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-4 inline-block">
-            <div className="px-4 py-1 rounded-full bg-infinity-500/10 text-infinity-600 dark:text-infinity-400 text-sm font-medium animate-fade-in">
-              The Future of Financial Technology
-            </div>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-infinity-600 to-infinity-800 dark:from-infinity-400 dark:to-infinity-600">
-              Infinity
+      {/* Galaxy background */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-60">
+        <div className="galaxy-background"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
+            <span className="font-serif">Infinity</span>{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-infinity-600 via-infinity-500 to-infinity-700">
+              Financial Capital
             </span>
-            <span> Financial Services</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            Empowering individuals through innovative financial solutions. 
-            Where modern technology meets traditional financial wisdom.
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
+            Empowering your financial journey with cutting-edge technology, expert insights, and a suite of innovative products designed for the modern investor.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <Button size="lg" asChild>
-              <Link to="/flamingo">Explore Products</Link>
+          <div className="flex flex-wrap gap-4 justify-center mb-12">
+            <Button asChild size="lg">
+              <Link to="/markets">Explore Markets</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link to="/about">Learn More</Link>
             </Button>
           </div>
           
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">₹50B+</div>
-              <p className="text-sm text-muted-foreground">Daily Volume</p>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-infinity-600 dark:text-infinity-500">
+                180+
+              </div>
+              <div className="text-muted-foreground">Global Markets</div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">2.5M+</div>
-              <p className="text-sm text-muted-foreground">Happy Customers</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">128+</div>
-              <p className="text-sm text-muted-foreground">Global Markets</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">24/7</div>
-              <p className="text-sm text-muted-foreground">Customer Support</p>
+            
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-infinity-600 dark:text-infinity-500">
+                24/7
+              </div>
+              <div className="text-muted-foreground">Customer Support</div>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Subtle wave divider */}
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent"></div>
     </section>
   );
 }

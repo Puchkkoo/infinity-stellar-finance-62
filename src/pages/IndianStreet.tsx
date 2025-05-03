@@ -5,8 +5,14 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { BackButton } from "@/components/back-button";
+import { useEffect } from "react";
 
 const IndianStreet = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const featuredArticles = [
     {
       title: "The Impact of Rising Tariffs on Global Markets",
@@ -133,6 +139,10 @@ const IndianStreet = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
+        <div className="container mx-auto px-4 pt-4">
+          <BackButton />
+        </div>
+        
         <section className="py-20 bg-gradient-to-b from-green-500/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-radial from-green-300/20 to-transparent rounded-full blur-3xl"></div>
@@ -168,6 +178,7 @@ const IndianStreet = () => {
                         <div className="text-sm font-medium mb-2">Featured Article</div>
                         <h3 className="text-xl md:text-2xl font-bold mb-2">The Digital Transformation of Financial Markets</h3>
                         <p className="text-sm text-white/80">How technology is reshaping the financial landscape in India and globally</p>
+                        <Link to="/blog/future-digital-finance-trends" className="inline-block mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 rounded text-white text-sm font-medium">Read Article</Link>
                       </div>
                     </div>
                   </div>

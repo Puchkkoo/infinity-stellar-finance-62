@@ -1,30 +1,25 @@
 
 import React, { useState, useEffect } from "react";
 import { FeaturePageTemplate } from "@/components/feature-page-template";
-import { LineChart, Settings, Layers, ArrowLeft } from "lucide-react";
+import { LineChart, Settings, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useNavigate } from "react-router-dom";
+import { BackButton } from "@/components/back-button";
 import { ResponsiveContainer, LineChart as RechartsLineChart, AreaChart as RechartsAreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const AdvancedCharting = () => {
-  const navigate = useNavigate();
   const [chartType, setChartType] = useState("candlestick");
   const [timeframe, setTimeframe] = useState("1D");
   const [indicators, setIndicators] = useState(["volume"]);
-  const [backgroundImage] = useState("https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=1000&auto=format&fit=crop");
+  const [backgroundImage] = useState("https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=2070&auto=format&fit=crop");
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleBackClick = () => {
-    navigate(-1);
-  };
 
   // Toggle indicator selection
   const toggleIndicator = (indicator) => {
@@ -38,15 +33,7 @@ const AdvancedCharting = () => {
   return (
     <div>
       <div className="container mx-auto px-4 pt-4">
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="mb-4 flex items-center gap-1"
-          onClick={handleBackClick}
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </Button>
+        <BackButton />
       </div>
       <FeaturePageTemplate
         title="Advanced Charting"

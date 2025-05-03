@@ -17,6 +17,7 @@ import Mission from "./pages/Mission";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import { ScrollToTop } from "./components/scroll-to-top";
 
 // Service Pages
 import Equity from "./pages/services/Equity";
@@ -43,6 +44,12 @@ import PortfolioAnalytics from "./pages/features/PortfolioAnalytics";
 import BlogPost from "./pages/blog/BlogPost";
 import BlogCategory from "./pages/blog/BlogCategory";
 
+// Sponge Pages
+import SpongeForums from "./pages/sponge/Forums";
+
+// Synapse Pages
+import TaskManagement from "./pages/synapse/TaskManagement";
+
 // Common placeholder components
 const PlaceholderComponent = ({ title }) => (
   <div className="container mx-auto px-4 py-12">
@@ -52,14 +59,12 @@ const PlaceholderComponent = ({ title }) => (
 );
 
 // Additional routes for Sponge product
-const SpongeForums = () => <PlaceholderComponent title="Forums" />;
 const SpongeResources = () => <PlaceholderComponent title="Resources" />;
 const SpongeMentors = () => <PlaceholderComponent title="Mentors" />;
 const SpongeEvents = () => <PlaceholderComponent title="Events" />;
 const SpongeAbout = () => <PlaceholderComponent title="About Sponge" />;
 
 // Additional routes for Synapse product
-const SynapseTaskManagement = () => <PlaceholderComponent title="Task Management" />;
 const SynapseCalendar = () => <PlaceholderComponent title="Calendar" />;
 const SynapseDocuments = () => <PlaceholderComponent title="Documents" />;
 
@@ -71,6 +76,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -117,7 +123,7 @@ const App = () => (
           <Route path="/sponge/about" element={<SpongeAbout />} />
           
           {/* Synapse Routes */}
-          <Route path="/synapse/task-management" element={<SynapseTaskManagement />} />
+          <Route path="/synapse/task-management" element={<TaskManagement />} />
           <Route path="/synapse/calendar" element={<SynapseCalendar />} />
           <Route path="/synapse/documents" element={<SynapseDocuments />} />
           
