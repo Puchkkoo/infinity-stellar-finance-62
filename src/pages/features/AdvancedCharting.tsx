@@ -219,6 +219,7 @@ const AdvancedCharting = () => {
                               <CartesianGrid strokeDasharray="3 3" stroke="#ccc" opacity={0.3} />
                               <XAxis dataKey="date" />
                               <YAxis domain={['auto', 'auto']} />
+                              <YAxis yAxisId="volume" orientation="right" domain={['auto', 'auto']} hide />
                               <Tooltip 
                                 contentStyle={{ 
                                   backgroundColor: 'rgba(255, 255, 255, 0.9)', 
@@ -229,7 +230,7 @@ const AdvancedCharting = () => {
                               <Legend />
                               <Area type="monotone" dataKey="close" stroke="#8884d8" fillOpacity={1} fill="url(#colorArea)" />
                               {indicators.includes('volume') && (
-                                <Area type="monotone" dataKey="volume" stroke="#82ca9d" fill="#82ca9d" yAxisId={1} />
+                                <Area type="monotone" dataKey="volume" stroke="#82ca9d" fill="#82ca9d" yAxisId="volume" />
                               )}
                             </RechartsAreaChart>
                           ) : (
@@ -237,6 +238,7 @@ const AdvancedCharting = () => {
                               <CartesianGrid strokeDasharray="3 3" stroke="#ccc" opacity={0.3} />
                               <XAxis dataKey="date" />
                               <YAxis domain={['auto', 'auto']} />
+                              <YAxis yAxisId="volume" orientation="right" domain={['auto', 'auto']} hide />
                               <Tooltip 
                                 contentStyle={{ 
                                   backgroundColor: 'rgba(255, 255, 255, 0.9)', 
@@ -253,7 +255,7 @@ const AdvancedCharting = () => {
                                 </>
                               )}
                               {indicators.includes('volume') && (
-                                <Line type="monotone" dataKey="volume" stroke="#82ca9d" yAxisId={1} />
+                                <Line type="monotone" dataKey="volume" stroke="#82ca9d" yAxisId="volume" />
                               )}
                             </RechartsLineChart>
                           )}
