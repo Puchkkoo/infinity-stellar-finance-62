@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorldMap } from "./world-map";
@@ -61,7 +60,7 @@ export function MarketsOverview() {
             </CardHeader>
             <CardContent className="p-0 relative">
               <div className="h-[500px] w-full relative">
-                <WorldMap onRegionSelect={handleRegionSelect} />
+                <WorldMap />
                 
                 {/* 3D Popup Market Data */}
                 <div className="absolute top-4 right-4 p-6 bg-white/90 dark:bg-infinity-900/90 backdrop-blur-lg rounded-xl shadow-2xl border border-infinity-200 dark:border-infinity-800 w-72 transform transition-all duration-500 animate-fade-in z-50">
