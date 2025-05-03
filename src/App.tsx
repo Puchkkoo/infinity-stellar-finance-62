@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -43,17 +43,25 @@ import PortfolioAnalytics from "./pages/features/PortfolioAnalytics";
 import BlogPost from "./pages/blog/BlogPost";
 import BlogCategory from "./pages/blog/BlogCategory";
 
+// Common placeholder components
+const PlaceholderComponent = ({ title }) => (
+  <div className="container mx-auto px-4 py-12">
+    <h1 className="text-2xl font-bold mb-4">{title}</h1>
+    <p>Coming Soon</p>
+  </div>
+);
+
 // Additional routes for Sponge product
-const SpongeForums = () => <div>Forums Coming Soon</div>;
-const SpongeResources = () => <div>Resources Coming Soon</div>;
-const SpongeMentors = () => <div>Mentors Coming Soon</div>;
-const SpongeEvents = () => <div>Events Coming Soon</div>;
-const SpongeAbout = () => <div>About Sponge Coming Soon</div>;
+const SpongeForums = () => <PlaceholderComponent title="Forums" />;
+const SpongeResources = () => <PlaceholderComponent title="Resources" />;
+const SpongeMentors = () => <PlaceholderComponent title="Mentors" />;
+const SpongeEvents = () => <PlaceholderComponent title="Events" />;
+const SpongeAbout = () => <PlaceholderComponent title="About Sponge" />;
 
 // Additional routes for Synapse product
-const SynapseTaskManagement = () => <div>Task Management Coming Soon</div>;
-const SynapseCalendar = () => <div>Calendar Coming Soon</div>;
-const SynapseDocuments = () => <div>Documents Coming Soon</div>;
+const SynapseTaskManagement = () => <PlaceholderComponent title="Task Management" />;
+const SynapseCalendar = () => <PlaceholderComponent title="Calendar" />;
+const SynapseDocuments = () => <PlaceholderComponent title="Documents" />;
 
 const queryClient = new QueryClient();
 
