@@ -14,7 +14,7 @@ import { MarketsOverview } from "@/components/markets-overview";
 const Index = () => {
   // Scroll to top function when component mounts
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
   return (
