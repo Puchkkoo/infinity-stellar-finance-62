@@ -67,29 +67,11 @@ const About = () => {
                       </div>
                     </div>
                     
-{/*                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
-                      <div>
-                        <h3 className="text-lg font-bold">Priya Shah</h3>
-                        <p className="text-sm text-muted-foreground">CTO & Co-Founder</p>
-                      </div>
-                    </div> */}
+
                     
-{/*                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
-                      <div>
-                        <h3 className="text-lg font-bold">Raj Mehta</h3>
-                        <p className="text-sm text-muted-foreground">Chief Financial Officer</p>
-                      </div>
-                    </div> */}
+
                     
-{/*                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
-{/*                       <div>
-                        <h3 className="text-lg font-bold">Meera Joshi</h3>
-                        <p className="text-sm text-muted-foreground">Chief Product Officer</p>
-                      </div> */}
-                    </div> */}
+
                   </div>
                 </div>
               </div>
