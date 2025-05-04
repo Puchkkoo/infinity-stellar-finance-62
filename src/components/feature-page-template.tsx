@@ -21,6 +21,7 @@ export interface FeaturePageProps {
     title: string;
     description: string;
   }[];
+  additionalContent?: ReactNode;
   children?: ReactNode;
 }
 
@@ -33,6 +34,7 @@ export function FeaturePageTemplate({
   benefits,
   howItWorks = [],
   useCases = [],
+  additionalContent,
   children,
 }: FeaturePageProps) {
   return (
@@ -125,6 +127,9 @@ export function FeaturePageTemplate({
             </div>
           </section>
         )}
+        
+        {/* Render additional content if provided */}
+        {additionalContent}
         
         {/* Render children content if provided */}
         {children}
