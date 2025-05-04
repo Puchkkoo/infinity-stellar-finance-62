@@ -19,7 +19,7 @@ const About = () => {
                 <div>
                   <h2 className="text-2xl font-serif font-bold mb-4">Our Story</h2>
                   <p className="text-muted-foreground mb-4">
-                    Founded in 2022, Infinity emerged from a vision to bridge the gap between traditional financial services and modern technology. Our founders, with decades of experience in finance and technology sectors, recognized the need for a more intuitive, accessible, and powerful financial ecosystem.
+                    Founded in 2025, Infinity emerged from a vision to bridge the gap between traditional financial services and modern technology. Our founders, with decades of experience in finance and technology sectors, recognized the need for a more intuitive, accessible, and powerful financial ecosystem.
                   </p>
                   <p className="text-muted-foreground">
                     Since our inception, we've been committed to developing innovative solutions that empower individuals and institutions to navigate the complexities of global finance with confidence and ease.
@@ -62,34 +62,34 @@ const About = () => {
                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
                       <div>
-                        <h3 className="text-lg font-bold">Arjun Patel</h3>
+                        <h3 className="text-lg font-bold">Anupam Singh</h3>
                         <p className="text-sm text-muted-foreground">CEO & Co-Founder</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-4">
+{/*                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
                       <div>
                         <h3 className="text-lg font-bold">Priya Shah</h3>
                         <p className="text-sm text-muted-foreground">CTO & Co-Founder</p>
                       </div>
-                    </div>
+                    </div> */}
                     
-                    <div className="flex items-center space-x-4">
+{/*                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
                       <div>
                         <h3 className="text-lg font-bold">Raj Mehta</h3>
                         <p className="text-sm text-muted-foreground">Chief Financial Officer</p>
                       </div>
-                    </div>
+                    </div> */}
                     
-                    <div className="flex items-center space-x-4">
+{/*                     <div className="flex items-center space-x-4">
                       <div className="w-16 h-16 rounded-full bg-infinity-100 dark:bg-infinity-900"></div>
-                      <div>
+{/*                       <div>
                         <h3 className="text-lg font-bold">Meera Joshi</h3>
                         <p className="text-sm text-muted-foreground">Chief Product Officer</p>
-                      </div>
-                    </div>
+                      </div> */}
+                    </div> */}
                   </div>
                 </div>
               </div>
