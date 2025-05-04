@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { FeaturePageTemplate } from "@/components/feature-page-template";
 import { Book, ChevronRight, GraduationCap, FileText, CheckCircle } from "lucide-react";
@@ -261,7 +260,6 @@ const LearningResources = () => {
     }
   ];
 
-  // Define stock market basics content
   const stockMarketContent = [
     {
       title: "What Are Stock Markets?",
@@ -610,11 +608,17 @@ const LearningResources = () => {
                                       {item.pages && <Badge variant="outline">{item.pages} pages</Badge>}
                                       {item.format && <Badge variant="outline" className="ml-2">{item.format}</Badge>}
                                       {item.type && <Badge variant="outline">{item.type}</Badge>}
-                                      {item.difficulty && <Badge variant={
-                                        item.difficulty === "Easy" ? "default" :
-                                        item.difficulty === "Medium" ? "secondary" :
-                                        "destructive"
-                                      } variant="outline">{item.difficulty}</Badge>}
+                                      {item.difficulty && (
+                                        <Badge 
+                                          variant={
+                                            item.difficulty === "Easy" ? "default" :
+                                            item.difficulty === "Medium" ? "secondary" :
+                                            "destructive"
+                                          }
+                                        >
+                                          {item.difficulty}
+                                        </Badge>
+                                      )}
                                     </div>
                                     <Button 
                                       size="sm" 
