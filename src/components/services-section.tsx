@@ -36,7 +36,7 @@ export function ServicesSection() {
       title: "Gullak (Mutual Funds)",
       description: "Build wealth systematically through our curated mutual fund offerings",
       color: "bg-gradient-to-br from-infinity-500 to-infinity-700",
-      image: "https://images.unsplash.com/photo-1579621970590-9d624316780b?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1000&auto=format&fit=crop", // Updated to a starry night background
       url: "/services/gullak"
     },
     {

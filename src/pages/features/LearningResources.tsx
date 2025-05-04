@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { FeaturePageTemplate } from "@/components/feature-page-template";
 import { Book, ChevronRight, GraduationCap, FileText, CheckCircle } from "lucide-react";
@@ -7,8 +8,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { toast } from "sonner";
+import { LearningContent } from "@/components/learning-content";
+import { Link } from "react-router-dom";
 
 const LearningResources = () => {
   const [activeRoadmap, setActiveRoadmap] = useState<string>("personal-finance");
@@ -524,63 +526,12 @@ const LearningResources = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="mb-6">
-                      <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-medium">Course Content</h3>
-                        <div className="text-sm text-muted-foreground">
-                          {completedTopics} of {activeContent.length} topics completed
-                        </div>
-                      </div>
-                      
-                      <Accordion type="single" collapsible className="w-full">
-                        {activeContent.map((item, index) => (
-                          <AccordionItem key={index} value={`item-${index}`}>
-                            <AccordionTrigger>
-                              <div className="flex items-center">
-                                <div className={`w-6 h-6 rounded-full mr-3 flex items-center justify-center text-xs ${index < completedTopics ? "bg-green-500 text-white" : "bg-muted text-muted-foreground"}`}>
-                                  {index < completedTopics ? "✓" : index + 1}
-                                </div>
-                                <span>{item.title}</span>
-                              </div>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="pl-9">
-                                <p className="text-muted-foreground mb-4">{item.content}</p>
-                                <Button 
-                                  size="sm" 
-                                  variant={index < completedTopics ? "outline" : "default"}
-                                  onClick={() => handleMarkComplete(index)}
-                                  className="flex items-center gap-1"
-                                >
-                                  {index < completedTopics ? (
-                                    <>
-                                      <CheckCircle className="h-4 w-4" /> Completed
-                                    </>
-                                  ) : (
-                                    "Mark as Complete"
-                                  )}
-                                </Button>
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
-                    </div>
-
-                    {progress[activeRoadmap] === 100 && (
-                      <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-900/30">
-                        <div className="flex items-center gap-2 text-green-700 dark:text-green-400 font-medium mb-2">
-                          <CheckCircle className="h-5 w-5" />
-                          <span>Course Completed!</span>
-                        </div>
-                        <p className="text-green-700/80 dark:text-green-400/80 text-sm">
-                          Congratulations! You've completed this course. You can now download your certificate or move on to the next course in your learning journey.
-                        </p>
-                        <Button variant="outline" className="mt-4" onClick={() => toast.success("Certificate downloaded")}>
-                          Download Certificate
-                        </Button>
-                      </div>
-                    )}
+                    <LearningContent 
+                      content={activeContent}
+                      completedTopics={completedTopics}
+                      onMarkComplete={handleMarkComplete}
+                      progress={progress[activeRoadmap]}
+                    />
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -638,8 +589,10 @@ const LearningResources = () => {
                         </ul>
                       </CardContent>
                       <CardFooter>
-                        <Button variant="outline" size="sm" className="w-full">
-                          View All {section.title}
+                        <Button variant="outline" size="sm" className="w-full" asChild>
+                          <Link to="/features/learning-resources/all">
+                            View All {section.title}
+                          </Link>
                         </Button>
                       </CardFooter>
                     </Card>

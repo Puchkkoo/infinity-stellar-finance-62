@@ -71,9 +71,10 @@ export function MarketsOverview() {
                   <CardDescription>Click on a region to view its market indices</CardDescription>
                 </CardHeader>
                 <CardContent className="p-0 relative">
-                  <div className="h-[500px] w-full relative">
-                    {/* Pushing image higher to align with points */}
-                    <div className="absolute inset-0 -top-16 overflow-hidden">
+                  {/* Fixed height container for the map */}
+                  <div className="h-[400px] w-full relative">
+                    {/* Map container with adjusted position */}
+                    <div className="absolute inset-0 overflow-hidden">
                       <WorldMap />
                     </div>
                     

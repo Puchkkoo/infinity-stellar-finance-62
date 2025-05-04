@@ -10,6 +10,7 @@ import { RoadmapSection } from "@/components/roadmap-section";
 import { MissionSection } from "@/components/mission-section";
 import { NewsSection } from "@/components/news-section";
 import { MarketsOverview } from "@/components/markets-overview";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const Index = () => {
   // Scroll to top function when component mounts
@@ -19,6 +20,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
         <HeroSection />

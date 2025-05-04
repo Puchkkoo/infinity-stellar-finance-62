@@ -1,6 +1,8 @@
 
 import { FeaturePageTemplate } from "@/components/feature-page-template";
 import { Microscope } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const SentimentAnalysis = () => {
   return (
@@ -80,6 +82,21 @@ const SentimentAnalysis = () => {
           description: "Use sentiment indicators as an early warning system for potential problems affecting your portfolio holdings, allowing proactive risk management."
         }
       ]}
+      additionalContent={
+        <div className="py-12 bg-background">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-2xl font-bold mb-6">Explore Our AI-Powered Analysis Dashboard</h3>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Get deep insights into market sentiment with our interactive dashboard featuring real-time data visualization and advanced analytics
+            </p>
+            <Button size="lg" className="bg-infinity-600 hover:bg-infinity-700" asChild>
+              <Link to="/features/sentiment-analysis-detail">
+                View Sentiment Analysis Dashboard
+              </Link>
+            </Button>
+          </div>
+        </div>
+      }
     />
   );
 };
