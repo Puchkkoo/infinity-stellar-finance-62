@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorldMap } from "./world-map";
 import { Map } from "lucide-react";
 import MarketDetail from "./market-detail";
+import StockTicker from "./stock-ticker";
 
 export function MarketsOverview() {
   const [activeRegion, setActiveRegion] = useState("indian");
@@ -50,7 +51,7 @@ export function MarketsOverview() {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center rounded-full bg-infinity-100 p-2 dark:bg-infinity-900/40 mb-4">
             <Map className="h-5 w-5 text-infinity-700 dark:text-infinity-400" />
           </div>
@@ -58,6 +59,11 @@ export function MarketsOverview() {
           <p className="section-subtitle">
             Stay updated with real-time market data from around the world
           </p>
+        </div>
+        
+        {/* Stock Ticker */}
+        <div className="mb-8">
+          <StockTicker />
         </div>
 
         {selectedMarket ? (
@@ -68,41 +74,13 @@ export function MarketsOverview() {
               <Card className="overflow-hidden">
                 <CardHeader>
                   <CardTitle className="text-2xl font-serif">Interactive World Markets</CardTitle>
-                  <CardDescription>Click on a region to view its market indices</CardDescription>
+                  <CardDescription>Click on a country to view its market indices</CardDescription>
                 </CardHeader>
                 <CardContent className="p-0 relative">
-                  {/* Fixed height container for the map */}
-                  <div className="h-[400px] w-full relative">
-                    {/* Map container with adjusted position */}
+                  {/* Map container */}
+                  <div className="h-[450px] w-full relative">
                     <div className="absolute inset-0 overflow-hidden">
                       <WorldMap />
-                    </div>
-                    
-                    {/* 3D Popup Market Data */}
-                    <div className="absolute top-4 right-4 p-6 bg-white/90 dark:bg-infinity-900/90 backdrop-blur-lg rounded-xl shadow-2xl border border-infinity-200 dark:border-infinity-800 w-72 transform transition-all duration-500 animate-fade-in z-50">
-                      <h3 className="text-lg font-serif font-semibold mb-3 flex items-center">
-                        <span className="w-3 h-3 rounded-full bg-infinity-500 mr-2"></span>
-                        {activeRegion.charAt(0).toUpperCase() + activeRegion.slice(1)} Markets
-                      </h3>
-                      
-                      <div className="space-y-3">
-                        {marketIndices[activeRegion as keyof typeof marketIndices].map((index, i) => (
-                          <div key={i} className="flex justify-between items-center p-2 bg-white/50 dark:bg-infinity-800/30 rounded-lg">
-                            <span className="font-medium">{index.name}</span>
-                            <div className="flex items-center">
-                              <span className="font-semibold mr-2">{index.value}</span>
-                              <span className={`${index.changeClass}`}>
-                                {index.change}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* 3D Effect Elements */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none rounded-xl"></div>
-                      <div className="absolute -bottom-2 -right-2 w-full h-full bg-infinity-200/20 dark:bg-infinity-700/10 rounded-xl transform rotate-2 -z-10"></div>
-                      <div className="absolute -bottom-4 -right-4 w-full h-full bg-infinity-200/10 dark:bg-infinity-700/5 rounded-xl transform rotate-3 -z-20"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -139,7 +117,7 @@ export function MarketsOverview() {
                             </span>
                           </div>
                           <div className="mt-2 text-xs text-muted-foreground group-hover:text-infinity-600/70 dark:group-hover:text-infinity-400/70 transition-colors">
-                            Click to view all 50 companies
+                            Click to view all companies
                           </div>
                         </CardContent>
                       </Card>

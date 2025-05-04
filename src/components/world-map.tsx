@@ -11,66 +11,75 @@ export function WorldMap() {
   const markets = {
     india: { 
       name: "Indian Markets", 
-      index: "NIFTY 50", 
-      value: "21,843.24", 
-      change: "+1.25%",
-      description: "India's premier stock market index representing the weighted average of 50 of the largest Indian companies listed on the National Stock Exchange."
+      indices: [
+        { name: "NIFTY 50", value: "21,843.24", change: "+1.25%" },
+        { name: "SENSEX", value: "71,394.88", change: "+1.31%" },
+        { name: "NIFTY BANK", value: "48,259.30", change: "+0.89%" }
+      ]
     },
     usa: { 
       name: "USA Markets", 
-      index: "S&P 500", 
-      value: "5,143.12", 
-      change: "+0.75%",
-      description: "The Standard & Poor's 500 is a stock market index tracking the stock performance of 500 large companies listed on exchanges in the United States."
+      indices: [
+        { name: "S&P 500", value: "5,143.12", change: "+0.75%" },
+        { name: "DOW JONES", value: "38,612.25", change: "+0.67%" },
+        { name: "NASDAQ", value: "17,321.85", change: "+0.93%" }
+      ]
     },
     europe: { 
       name: "European Markets", 
-      index: "STOXX 600", 
-      value: "512.34", 
-      change: "+0.42%",
-      description: "The STOXX Europe 600 represents large, mid and small capitalization companies across 17 countries of the European region."
+      indices: [
+        { name: "STOXX 600", value: "512.34", change: "+0.42%" },
+        { name: "DAX", value: "18,321.05", change: "+0.62%" },
+        { name: "FTSE 100", value: "8,142.18", change: "+0.45%" }
+      ]
     },
     china: { 
       name: "Chinese Markets", 
-      index: "Shanghai", 
-      value: "3,291.19", 
-      change: "-0.18%",
-      description: "The Shanghai Composite Index is a stock market index of all stocks that are traded at the Shanghai Stock Exchange."
+      indices: [
+        { name: "Shanghai", value: "3,291.19", change: "-0.18%" },
+        { name: "Shenzhen", value: "2,058.87", change: "-0.22%" },
+        { name: "CSI 300", value: "3,581.94", change: "-0.14%" }
+      ]
     },
     japan: { 
       name: "Japanese Markets", 
-      index: "Nikkei 225", 
-      value: "39,523.55", 
-      change: "+1.10%",
-      description: "The Nikkei 225 is a stock market index for the Tokyo Stock Exchange, representing the top 225 blue chip companies listed on the TSE."
+      indices: [
+        { name: "Nikkei 225", value: "39,523.55", change: "+1.10%" },
+        { name: "TOPIX", value: "2,756.21", change: "+0.85%" },
+        { name: "JPX-Nikkei 400", value: "24,893.47", change: "+0.92%" }
+      ]
     },
     uk: { 
       name: "UK Markets", 
-      index: "FTSE 100", 
-      value: "8,142.18", 
-      change: "+0.38%",
-      description: "The Financial Times Stock Exchange 100 Index is a share index of the 100 companies listed on the London Stock Exchange with the highest market capitalization."
+      indices: [
+        { name: "FTSE 100", value: "8,142.18", change: "+0.38%" },
+        { name: "FTSE 250", value: "21,587.52", change: "+0.42%" },
+        { name: "FTSE All-Share", value: "4,436.73", change: "+0.40%" }
+      ]
     },
     germany: { 
       name: "German Markets", 
-      index: "DAX", 
-      value: "18,321.05", 
-      change: "+0.62%",
-      description: "The DAX is a blue chip stock market index consisting of the 40 major German companies trading on the Frankfurt Stock Exchange."
+      indices: [
+        { name: "DAX", value: "18,321.05", change: "+0.62%" },
+        { name: "MDAX", value: "26,984.73", change: "+0.54%" },
+        { name: "TecDAX", value: "3,384.92", change: "+0.48%" }
+      ]
     },
     brazil: { 
       name: "Brazilian Markets", 
-      index: "Bovespa", 
-      value: "129,324.15", 
-      change: "-0.22%",
-      description: "The Bovespa Index is the benchmark index of about 60 stocks that are traded on the B3 (Brasil Bolsa Balcão), representing the Brazilian economy."
+      indices: [
+        { name: "Bovespa", value: "129,324.15", change: "-0.22%" },
+        { name: "IBrX 100", value: "54,872.36", change: "-0.18%" },
+        { name: "IBrX 50", value: "22,436.81", change: "-0.20%" }
+      ]
     },
     australia: { 
       name: "Australian Markets", 
-      index: "ASX 200", 
-      value: "7,835.45", 
-      change: "+0.91%",
-      description: "The S&P/ASX 200 index is a market-capitalization weighted and float-adjusted stock market index of stocks listed on the Australian Securities Exchange."
+      indices: [
+        { name: "ASX 200", value: "7,835.45", change: "+0.91%" },
+        { name: "ASX 300", value: "7,628.73", change: "+0.87%" },
+        { name: "All Ordinaries", value: "8,092.31", change: "+0.90%" }
+      ]
     }
   };
 
@@ -102,21 +111,25 @@ export function WorldMap() {
     }
   };
 
-  // Function to determine marker color based on change value
+  // Function to determine marker color based on market performance
   const getMarkerColor = (market: string) => {
-    const change = markets[market as keyof typeof markets]?.change;
-    if (!change) return 'bg-gray-400';
+    const marketData = markets[market as keyof typeof markets];
+    if (!marketData) return 'bg-gray-400';
     
-    return change.startsWith('+') ? 'bg-green-500' : 'bg-red-500';
+    // Calculate if more indices are positive than negative
+    const positiveIndices = marketData.indices.filter(index => index.change.startsWith('+')).length;
+    const isPositive = positiveIndices > marketData.indices.length / 2;
+    
+    return isPositive ? 'bg-green-500' : 'bg-red-500';
   };
 
   return (
-    <div className="relative w-full aspect-[16/9] bg-infinity-100 dark:bg-infinity-900/30 rounded-xl overflow-hidden">
+    <div className="relative w-full aspect-[21/9] bg-infinity-100 dark:bg-infinity-900/30 rounded-xl overflow-hidden">
       {/* World map image */}
       <img 
         src="/lovable-uploads/e5337efd-8bfa-4ae7-9c77-4dc1b265c84a.png" 
         alt="World Map"
-        className="absolute inset-0 w-full h-full object-cover" 
+        className="absolute inset-0 w-full h-full object-contain" 
       />
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-infinity-100/40 dark:to-infinity-900/50"></div>
@@ -142,31 +155,28 @@ export function WorldMap() {
                   </h3>
                 </div>
                 
-                <p className="text-sm text-muted-foreground">
-                  {markets[market as keyof typeof markets]?.index}
-                </p>
-                
-                <div className="flex justify-between items-center">
-                  <p className="text-2xl font-bold">
-                    {markets[market as keyof typeof markets]?.value}
-                  </p>
-                  <p className={`font-medium text-lg ${markets[market as keyof typeof markets]?.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                    {markets[market as keyof typeof markets]?.change}
-                  </p>
+                <div className="space-y-2">
+                  {markets[market as keyof typeof markets]?.indices.map((index, idx) => (
+                    <div key={idx} className="flex justify-between items-center p-2 bg-white/50 dark:bg-infinity-800/30 rounded-lg hover:bg-white/80 dark:hover:bg-infinity-800/50 transition-colors">
+                      <span className="font-medium">{index.name}</span>
+                      <div className="flex items-center">
+                        <span className="font-semibold mr-2">{index.value}</span>
+                        <span className={index.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}>
+                          {index.change}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
                 
                 <div className="h-px bg-gradient-to-r from-transparent via-infinity-200 dark:via-infinity-700 to-transparent my-2"></div>
-                
-                <p className="text-sm text-muted-foreground mt-2">
-                  {markets[market as keyof typeof markets]?.description}
-                </p>
                 
                 <div className="pt-2">
                   <a 
                     href={`/markets?region=${market}`} 
                     className="text-infinity-600 dark:text-infinity-400 font-medium hover:underline flex items-center group"
                   >
-                    View detailed analysis
+                    View all indices
                     <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
