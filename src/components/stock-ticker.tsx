@@ -87,7 +87,7 @@ export default function StockTicker() {
   
   return (
     <div className="w-full overflow-hidden bg-infinity-50 dark:bg-infinity-900/30 shadow-sm rounded-md border border-infinity-200 dark:border-infinity-800/50">
-      <style jsx>{`
+      <style>{`
         @keyframes ticker {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
